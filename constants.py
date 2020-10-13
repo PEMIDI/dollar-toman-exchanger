@@ -5,22 +5,26 @@ import json
 
 def get_data(url):
     response = requests.get(url)
-    return json.loads(response.text)
+    if response.status_code == 200:
+        return json.loads(response.text)
+
+    return None
 
 
 data = get_data(url)
 
 
 def get_dollar_price(data):
-    
-    return data['list'][0]['price']
+    dollar_price = data['list'][0]['price']
+    return dollar_price
 
 
-each_dollar = get_dollar_price(data)
+each_dollar_to_rial = get_dollar_price(data)
 
 
-def dollar_to_rial(dollar = 1):
-    return dollar * each_dollar
+def dollar_to_toman(dollar = 1):
+    toman = (dollar * each_dollar_to_rial) // 10 
+    return toman
 
 
 
