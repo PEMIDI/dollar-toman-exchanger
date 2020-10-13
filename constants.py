@@ -11,13 +11,9 @@ def get_data(url):
 data = get_data(url)
 
 
-def get_dollar_price(data, type = int):
-    dollar_price = data['list'][0]['price']
-    if type == str:
-        return str(dollar_price)
-
+def get_dollar_price(data):
+    
     return data['list'][0]['price']
-
 
 
 each_dollar = get_dollar_price(data)
