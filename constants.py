@@ -1,5 +1,5 @@
 import requests
-from config import url
+from config import URL_CURRENCY
 import json
 
 
@@ -11,24 +11,27 @@ def get_data(url):
     return None
 
 
-data = get_data(url)
+def get_currency(data):
+    return data['list']
 
 
-def get_dollar_price(data):
-    dollar_price = data['list'][0]['price']
-    return dollar_price
+def dollar_to_rial(price_dollar, value_dollar=1):
+    return value_dollar * price_dollar
 
 
-each_dollar_to_rial = get_dollar_price(data)
+def import_data_to_file(currency, time):
+    list_currency = list()
+
+    for i in currency:
+        list_currency.append(f'{i["nameFa"]}: {i["price"]}')
+
+    with open(f'archive/currency.json', 'w') as f:
+        f.writelines(json.dumps(list_currency))
 
 
-def dollar_to_toman(dollar = 1):
-    toman = (dollar * each_dollar_to_rial) // 10 
-    return toman
-
-
-
-
-
-
+json_data = get_data(URL_CURRENCY)
+all_currency = get_currency(json_data)
+timeUpdate = json_data['timeUpdate'][0]
+import_data_to_file(all_currency, timeUpdate)
+price_dollar = all_currency[0]['price']
 
