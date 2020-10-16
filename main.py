@@ -6,9 +6,7 @@ import json
 
 def exchanger_currency():
     number_of_dollars = int(input('how much dollar you have? '))
-
     result = dollar_to_rial(price_dollar, number_of_dollars)
-
     print(f"{number_of_dollars} ِDollar(USD) = {result} Rial(IRR)")
     sleep(3)
     menu()
@@ -16,9 +14,7 @@ def exchanger_currency():
 
 def exchanger_gold():
     number_of_gold = int(input('how much gold coin you have? '))
-
     result = gold_coin(price_gold, number_of_gold)
-
     print(f"{number_of_gold} Gold Coin = {result} Rial(IRR)")
     sleep(3)
     menu()
@@ -31,7 +27,7 @@ def show_currency():
         for i in data:
             print(i)
             sleep(0.25)
-
+            
     sleep(3)
     menu()
 
