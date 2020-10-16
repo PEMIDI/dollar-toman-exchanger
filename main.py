@@ -58,17 +58,19 @@ def menu():
                        '4. for see how many coins cost a few Rials press (4)\n'
                        '5. for exit press (e)\n'
                        'Please enter your choice: ')
-        if choice == '1':
-            exchanger_currency()
-        if choice == '2':
-            show_currency()
-        if choice == '3':
-            show_gold()
-        if choice == '4':
-            exchanger_gold()
+        
         if choice == 'e':
             print('See You')
             show_menu = False
+        
+        elif choice == '1':
+            exchanger_currency()
+        elif choice == '2':
+            show_currency()
+        elif choice == '3':
+            show_gold()
+        elif choice == '4':
+            exchanger_gold()
 
 
 menu()
